@@ -40,13 +40,19 @@ const todoManager = (()=>{
     arraystodos.splice(indice,1)
     console.log("corte-----------")
   }
+  function eleminarID (id) {
+    eliminarTodo (indiceID(id))
+  }
+  
   // funciones compartidas
   return {
     addtodo,
     showarray,
     indiceID,
     settodo,
-    eliminarTodo
+    eliminarTodo,
+    eleminarID,
+    arraystodos
   }
   //fin IFFE  
-}) ();
+})();
