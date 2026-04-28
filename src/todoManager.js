@@ -14,30 +14,48 @@ class Tarea {
 
 const todoManager = (()=>{
   // inicio iffe
-  const arraystodos = [];
+  const dataTodo = [];
+
 
   function addtodo (titulo, fecha, prioridad, proyectoid) {
-    arraystodos.push(new Tarea(titulo, fecha, prioridad, proyectoid))
+    dataTodo.push(new Tarea(titulo, fecha, prioridad, proyectoid))
   }
 
+  function idsProyects () {
+    const ids = dataTodo.map(tarea => tarea.proyectoid);
+    // console.table(ids);
+    const set = new Set(ids);
+    // console.log(set);
+    const arrayidProyect = [...set]
+    // console.log(arrayidProyect)
+    return  console.log(arrayidProyect)
+  }
+
+  function filtrarPorProyecto(proyectoid) {
+    return dataTodo.filter(tarea => tarea.proyectoid === proyectoid);
+    //segun un id me da todos los todos con ese id
+  }
+
+  
+
   function showarray () {
-    console.table(arraystodos)
+    console.table(dataTodo)
   }
 
   function indiceID (id) {
-    const indice = arraystodos.findIndex(todo => todo.proyectoid === id);
+    const indice = dataTodo.findIndex(todo => todo.proyectoid === id);
       console.log(indice)
   }
 
   function settodo (indice) {
-    console.log("actual " + arraystodos[indice].titulo)
-    arraystodos[indice].titulo = "gatobotas"
-    console.log("nuevo " + arraystodos[indice].titulo)
-    console.log(arraystodos[indice])
+    console.log("actual " + dataTodo[indice].titulo)
+    dataTodo[indice].titulo = "gatobotas"
+    console.log("nuevo " + dataTodo[indice].titulo)
+    console.log(dataTodo[indice])
   }
 
   function eliminarTodo (indice) {
-    arraystodos.splice(indice,1)
+    dataTodo.splice(indice,1)
     console.log("corte-----------")
   }
   function eleminarID (id) {
@@ -52,7 +70,10 @@ const todoManager = (()=>{
     settodo,
     eliminarTodo,
     eleminarID,
-    arraystodos
+    dataTodo,
+    idsProyects,
+    filtrarPorProyecto
+
   }
   //fin IFFE  
 })();
