@@ -5,6 +5,8 @@ export {domApp}
 const domApp = {
   divProyects : document.getElementById("project-container"),
   divTask : document.getElementById("task-container"),
+  summitProject : document.getElementById("submit-project"),
+  formProject : document.getElementById("form-Project"),
   
   printProject() {
     this.divProyects.innerHTML = ""
@@ -28,7 +30,8 @@ const domApp = {
     // const objProyect = appState.projects.filter(element => element.id === idproyect)[0]
     //find
     const objProyect = appState.projects.find(element => element.id === idproyect)
-    console.log(objProyect) // me devuelve el objeto y no el array con un solo objeto. Saco el [0]
+    // me devuelve el objeto y no el array con un solo objeto. Saco el [0]
+    //console.log(objProyect) 
 
     // obtengo el array de tareas que tengo en el proyecto con id.
     const arrayTasks = objProyect.tasks;
@@ -46,6 +49,20 @@ const domApp = {
       // console.log(element)
       itemlist.innerHTML = `title: ${element.title} -Date: ${element.date} -Priority ${element.priority} -Completed: ${element.completed}`
       listol.appendChild(itemlist)
+    })
+  },
+
+  BtnfromProyect(){
+    this.summitProject.addEventListener("click", e =>{
+      e.preventDefault()
+      //test de lo que necesito
+      console.log("click en submit");
+      const newProyect = document.getElementById("project-name").value;
+      console.log(newProyect);
+      appState.addProject(newProyect);
+      this.printProject();
+      //
+      this.formProject.reset()
     })
   }
 }

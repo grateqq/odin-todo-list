@@ -17,6 +17,7 @@ const miGato = appState.addProject("Gato");
 const miPerro = appState.addProject("Perro");
 const miLoro = appState.addProject("Loro");
 const miChancho = appState.addProject("Chancho");
+domApp.BtnfromProyect()
 
 appState.addTaskToProject(miGato.id,"alimentar",5,6)
 appState.addTaskToProject(miGato.id,"ronronear",5,6)
@@ -38,7 +39,7 @@ appState.addTaskToProject(miChancho.id,"gordo",5,6)
 
 
 //visualizo proyectos
-console.table(appState.projects)
+// console.table(appState.projects)
 // visualizar tareas
 // console.table(appState.projects[0].tasks)
 // console.table(appState.projects[1].tasks)
@@ -55,8 +56,8 @@ domApp.printProject()
 domApp.printProject()
 
 // Visualizar tareas de un proyecto. (idproyecto)
-domApp.printTask(miGato.id)
-domApp.printTask(miPerro.id)
+// domApp.printTask(miGato.id)
+// domApp.printTask(miPerro.id)
 // console.table(domApp.printTask(miGato.id))
 // console.log(typeof(domApp.printTask(miGato.id)))
 
