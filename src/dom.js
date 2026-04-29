@@ -23,8 +23,13 @@ const domApp = {
   
   printTask(idproyect){
     this.divTask.innerHTML = "";
-    // un 
-    const objProyect = appState.projects.filter(element => element.id === idproyect)[0]
+    // cambiamos de filter a find
+    //filter
+    // const objProyect = appState.projects.filter(element => element.id === idproyect)[0]
+    //find
+    const objProyect = appState.projects.find(element => element.id === idproyect)
+    console.log(objProyect) // me devuelve el objeto y no el array con un solo objeto. Saco el [0]
+
     // obtengo el array de tareas que tengo en el proyecto con id.
     const arrayTasks = objProyect.tasks;
     // cree lista ordenaday titulo
@@ -42,8 +47,5 @@ const domApp = {
       itemlist.innerHTML = `title: ${element.title} -Date: ${element.date} -Priority ${element.priority} -Completed: ${element.completed}`
       listol.appendChild(itemlist)
     })
-      
-   
-
   }
 }
