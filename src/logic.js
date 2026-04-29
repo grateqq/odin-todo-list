@@ -31,5 +31,7 @@ const appState = {
   deleteProject(id) {
     const result = this.projects.filter(proj => proj.id !== id);   
     this.projects = result;
-  }
+  },
+
+  
 };
