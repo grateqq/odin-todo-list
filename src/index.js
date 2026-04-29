@@ -1,6 +1,7 @@
 // /src/index.js
 import "./styles.css";
 import {appState} from "./logic.js"
+import {domApp} from "./dom.js"
 
 // console.clear()
 // appState.addProject("gato")
@@ -21,5 +22,12 @@ console.table(appState.projects)
 appState.deleteProject(miPerro.id)
 //visualizo proyectos
 console.table(appState.projects)
+
+
+
+//---DOM
+//Visualizo las proyectos y no se repiten si cargo doble
+domApp.printProject()
+domApp.printProject()
 
 
