@@ -11,8 +11,13 @@ const domApp = {
     appState.projects.forEach(element => {
       const btmProject = document.createElement("button");
       btmProject.innerHTML = `${element.name}`;
+      btmProject.dataset.id = element.id;
       this.divProyects.appendChild(btmProject)
-      
+      //click
+      btmProject.addEventListener("click", e => {
+        this.printTask(btmProject.dataset.id)
+      })
+    
     });
   },
   
