@@ -17,7 +17,6 @@ const miGato = appState.addProject("Gato");
 const miPerro = appState.addProject("Perro");
 const miLoro = appState.addProject("Loro");
 const miChancho = appState.addProject("Chancho");
-domApp.BtnfromProyect()
 
 appState.addTaskToProject(miGato.id,"alimentar",5,6)
 appState.addTaskToProject(miGato.id,"ronronear",5,6)
@@ -53,7 +52,8 @@ appState.addTaskToProject(miChancho.id,"gordo",5,6)
 //---DOM
 //Visualizo las proyectos y no se repiten si cargo doble
 domApp.printProject()
-domApp.printProject()
+// domApp.BtnfromProyect()
+
 
 // Visualizar tareas de un proyecto. (idproyecto)
 // domApp.printTask(miGato.id)

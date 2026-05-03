@@ -18,9 +18,13 @@ const domApp = {
       //click
       btmProject.addEventListener("click", e => {
         this.printTask(btmProject.dataset.id)
+        console.log("printTask")
       })
+        
+      
     
     });
+    this.BtnfromProyect()
   },
   
   printTask(idproyect){
@@ -145,13 +149,12 @@ const domApp = {
     this.summitProject.addEventListener("click", e =>{
       e.preventDefault()
       //test de lo que necesito
-      console.log("click en submit");
       const newProyect = document.getElementById("project-name").value;
       console.log(newProyect);
       appState.addProject(newProyect);
       this.printProject();
       //
-      this.formProject.reset()
+      
     })
   }
 }
