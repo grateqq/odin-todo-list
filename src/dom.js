@@ -24,7 +24,9 @@ const domApp = {
     
     });
     this.divProyects.addEventListener("click", e => {
-      this.printTask(e.target.dataset.id)
+      if (e.target.classList.contains('btn-Project')) {
+        this.printTask(e.target.dataset.id);
+      }
     })  
      
   },
