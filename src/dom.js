@@ -8,6 +8,11 @@ const domApp = {
   summitProject : document.getElementById("submit-project"),
   formProject : document.getElementById("form-Project"),
   
+  initapp() {
+    this.printProject();
+    this.BtnfromProyect();
+  },
+
   printProject() {
     this.divProyects.innerHTML = ""
     appState.projects.forEach(element => {
@@ -24,7 +29,7 @@ const domApp = {
       
     
     });
-    this.BtnfromProyect()
+    
   },
   
   printTask(idproyect){

@@ -51,7 +51,7 @@ appState.addTaskToProject(miChancho.id,"gordo",5,6)
 
 //---DOM
 //Visualizo las proyectos y no se repiten si cargo doble
-domApp.printProject()
+domApp.initapp()
 // domApp.BtnfromProyect()
 
 
