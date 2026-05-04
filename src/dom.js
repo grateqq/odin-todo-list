@@ -16,20 +16,21 @@ const domApp = {
   printProject() {
     this.divProyects.innerHTML = ""
     appState.projects.forEach(element => {
-      const btmProject = document.createElement("button");
-      btmProject.innerHTML = `${element.name}`;
-      btmProject.dataset.id = element.id;
-      this.divProyects.appendChild(btmProject)
-      //click
-      btmProject.addEventListener("click", e => {
-        this.printTask(btmProject.dataset.id)
-        console.log("printTask")
-      })
-        
+      const newBtonHTML = `
+      <button class="btn-Project" data-id="${element.id}">${element.name}</button>
+      `;
+      this.divProyects.insertAdjacentHTML("beforeend",newBtonHTML)
       
     
     });
-    
+    const btnsProyect = document.querySelectorAll(".btn-Project")
+    btnsProyect.forEach(element => {
+        element.addEventListener("click", e => {
+        this.printTask(element.dataset.id)
+        console.log("printTask")
+        })  
+    })
+     
   },
   
   printTask(idproyect){
@@ -96,14 +97,15 @@ const domApp = {
             <input id="priority" type="text">
           </div>
 
-          <button type="submit">Add Task</button>
+          <button id="btn-submit" type="submit">Add Task</button>
         </form>
       `;
 
     //(projectId, title, date, priority)
-      this.divTask.innerHTML = formHTML
+      this.divTask.insertAdjacentHTML("afterbegin",formHTML)
 
       //accion button Fin
+      const formSummit = document.getElementById("btn-submit") 
       formSummit.addEventListener("click", e => {
         e.preventDefault();
         //(projectId, title, date, priority)
