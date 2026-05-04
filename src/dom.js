@@ -23,13 +23,9 @@ const domApp = {
       
     
     });
-    const btnsProyect = document.querySelectorAll(".btn-Project")
-    btnsProyect.forEach(element => {
-        element.addEventListener("click", e => {
-        this.printTask(element.dataset.id)
-        console.log("printTask")
-        })  
-    })
+    this.divProyects.addEventListener("click", e => {
+      this.printTask(e.target.dataset.id)
+    })  
      
   },
   
