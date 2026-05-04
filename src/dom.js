@@ -80,52 +80,29 @@ const domApp = {
   },
   //creo formulario
   showCreateForm(idproyect) { 
+ 
+    const formHTML = `
+        <form id="task-form">
+          <div>
+            <label for="title">Title:</label>
+            <input id="title" type="text">
+          </div>
+          <div>
+            <label for="date">Date: </label>
+            <input id="date" type="text">
+          </div>
+          <div>
+            <label for="priority">Priority: </label>
+            <input id="priority" type="text">
+          </div>
+
+          <button type="submit">Add Task</button>
+        </form>
+      `;
+
     //(projectId, title, date, priority)
-    const taskForm = document.createElement("form");
+      this.divTask.innerHTML = formHTML
 
-    const formSummit = document.createElement("button")
-    formSummit.setAttribute("type", "summit")
-    formSummit.textContent = "add Tasks"
-      
-
-    const titlediv = document.createElement("div")
-    const titlelabel = document.createElement("label")
-      titlelabel.textContent = "Title: "
-      titlelabel.setAttribute('for', 'title');
-    const titleinput = document.createElement("input");
-      titleinput.setAttribute("id", "title");
-
-
-    const datediv = document.createElement("div");
-    const datelabel = document.createElement("label");
-     datelabel.textContent = "Date: "
-     datelabel.setAttribute('for', 'date');
-    const dateinput = document.createElement("input");
-     dateinput.setAttribute("id", "date");
-
-    
-    const prioritydiv = document.createElement("div")
-    const prioritylabel = document.createElement("label")
-      prioritylabel.textContent = "Priority: "
-      prioritylabel.setAttribute('for', 'priority');
-    const priorityinput = document.createElement("input")
-      priorityinput.setAttribute("id", "priority");
-
-      this.divTask.appendChild(taskForm)
-    
-      taskForm.appendChild(titlediv)
-      titlediv.appendChild(titlelabel)
-      titlediv.appendChild(titleinput)
-
-      taskForm.appendChild(datediv)
-      datediv.appendChild(datelabel)
-      datediv.appendChild(dateinput)
-
-      taskForm.appendChild(prioritydiv)
-      prioritydiv.appendChild(prioritylabel)
-      prioritydiv.appendChild(priorityinput)
-
-      taskForm.appendChild(formSummit)
       //accion button Fin
       formSummit.addEventListener("click", e => {
         e.preventDefault();
@@ -137,17 +114,8 @@ const domApp = {
           document.getElementById("priority").value,
         )
         this.printTask(idproyect)
-
-      
-
       })
        //accion button Fin
-
-
-
-
-  
-
   },
 
   BtnfromProyect(){
