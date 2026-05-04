@@ -43,6 +43,7 @@ const domApp = {
     const arrayTasks = objProyect.tasks;
     // cree lista ordenaday titulo
     const listol = document.createElement("ol");
+    listol.setAttribute("id", "listol")
     const titlelist = document.createElement("h3")
     titlelist.innerHTML = `${objProyect.name}`
     // creo boton para agregar tareas.
@@ -55,11 +56,10 @@ const domApp = {
     this.divTask.appendChild(listol);
 
     arrayTasks.forEach(element=>{
-      const itemlist = document.createElement("li")
+      const taskitemHTML = `<li>title: ${element.title} -Date: ${element.date} -Priority ${element.priority} -Completed: ${element.completed}</li>`
       // console.log("elemento: ")
       // console.log(element)
-      itemlist.innerHTML = `title: ${element.title} -Date: ${element.date} -Priority ${element.priority} -Completed: ${element.completed}`
-      listol.appendChild(itemlist)
+      listol.insertAdjacentHTML("beforeend",taskitemHTML)
     })
 
     //agrego funcion al boton agregar tarea

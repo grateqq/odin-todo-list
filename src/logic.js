@@ -11,6 +11,7 @@ const appState = {
       tasks: [] // <--- LAS TAREAS VIVEN AQUÍ ADENTRO
     };
     this.projects.push(project);
+    this.savedata()
     return project;
   },
 
@@ -25,13 +26,30 @@ const appState = {
         completed: false
       };
       project.tasks.push(newTask);
+       this.savedata()
     }
+    
   },
    
   deleteProject(id) {
     const result = this.projects.filter(proj => proj.id !== id);   
     this.projects = result;
+    this.savedata()
   },
+
+  savedata() {
+    const dataJSON = JSON.stringify(this.projects);
+     localStorage.setItem('projects', dataJSON);
+  },
+
+ loadData() {
+    const dataJSON = localStorage.getItem('projects');
+    if (dataJSON) {
+        this.projects = JSON.parse(dataJSON);
+    }
+    return this.projects;
+}
+
 
   
 };
