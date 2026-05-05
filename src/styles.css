@@ -1,7 +1,6 @@
 .todocontainer {
-   background-color: rgb(209, 164, 105);
+  background-color: rgb(209, 164, 105);
 }
-
 
 .container {
   display: flex;
@@ -9,5 +8,5 @@
 }
 
 #ProyectContainer {
-background-color: rgb(209, 164, 105);
+  background-color: rgb(209, 164, 105);
 }

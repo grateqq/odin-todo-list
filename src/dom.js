@@ -1,85 +1,79 @@
-import {appState} from "./logic.js"
+import { appState } from "./logic.js";
 
-export {domApp}
+export { domApp };
 
 const domApp = {
-  divProyects : document.getElementById("project-container"),
-  divTask : document.getElementById("task-container"),
-  summitProject : document.getElementById("submit-project"),
-  formProject : document.getElementById("form-Project"),
-  
+  divProyects: document.getElementById("project-container"),
+  divTask: document.getElementById("task-container"),
+  summitProject: document.getElementById("submit-project"),
+  formProject: document.getElementById("form-Project"),
+
   initapp() {
     this.printProject();
     this.BtnfromProyect();
   },
 
   printProject() {
-    this.divProyects.innerHTML = ""
+    this.divProyects.innerHTML = "";
     appState.projects.forEach(element => {
       const newBtonHTML = `
       <button class="btn-Project" data-id="${element.id}">${element.name}</button>
       `;
-      this.divProyects.insertAdjacentHTML("beforeend",newBtonHTML)
-      
-    
+      this.divProyects.insertAdjacentHTML("beforeend", newBtonHTML);
     });
     this.divProyects.addEventListener("click", e => {
-      if (e.target.classList.contains('btn-Project')) {
+      if (e.target.classList.contains("btn-Project")) {
         this.printTask(e.target.dataset.id);
       }
-    })  
-     
+    });
   },
-  
-  printTask(idproyect){
+
+  printTask(idproyect) {
     this.divTask.innerHTML = "";
     // cambiamos de filter a find
     //filter
     // const objProyect = appState.projects.filter(element => element.id === idproyect)[0]
     //find
-    const objProyect = appState.projects.find(element => element.id === idproyect)
+    const objProyect = appState.projects.find(element => element.id === idproyect);
     // me devuelve el objeto y no el array con un solo objeto. Saco el [0]
-    //console.log(objProyect) 
+    //console.log(objProyect)
 
     // obtengo el array de tareas que tengo en el proyecto con id.
     const arrayTasks = objProyect.tasks;
     // cree lista ordenaday titulo
     const listol = document.createElement("ol");
-    listol.setAttribute("id", "listol")
-    const titlelist = document.createElement("h3")
-    titlelist.innerHTML = `${objProyect.name}`
+    listol.setAttribute("id", "listol");
+    const titlelist = document.createElement("h3");
+    titlelist.innerHTML = `${objProyect.name}`;
     // creo boton para agregar tareas.
     const btnAddTarea = document.createElement("button");
-    btnAddTarea.innerText = `Agregar tarea`
-    btnAddTarea.dataset.id = idproyect
+    btnAddTarea.innerText = `Agregar tarea`;
+    btnAddTarea.dataset.id = idproyect;
 
     this.divTask.appendChild(titlelist);
     this.divTask.appendChild(btnAddTarea);
     this.divTask.appendChild(listol);
 
-    arrayTasks.forEach(element=>{
-      const taskitemHTML = `<li>title: ${element.title} -Date: ${element.date} -Priority ${element.priority} -Completed: ${element.completed}</li>`
+    arrayTasks.forEach(element => {
+      const taskitemHTML = `<li>title: ${element.title} -Date: ${element.date} -Priority ${element.priority} -Completed: ${element.completed}</li>`;
       // console.log("elemento: ")
       // console.log(element)
-      listol.insertAdjacentHTML("beforeend",taskitemHTML)
-    })
+      listol.insertAdjacentHTML("beforeend", taskitemHTML);
+    });
 
     //agrego funcion al boton agregar tarea
-    btnAddTarea.addEventListener("click", e=>{
+    btnAddTarea.addEventListener("click", e => {
+      e.preventDefault();
       // console.log("click en boton agregar tarea")
-      const idproy = btnAddTarea.dataset.id
+      const idproy = btnAddTarea.dataset.id;
       // console.log(idproy)
       // appState.addTaskToProject(idproy, "gato", 6, 4)
-      this.printTask(idproy)
-      this.showCreateForm(idproy)
-    })
-
-    
-
+      this.printTask(idproy);
+      this.showCreateForm(idproy);
+    });
   },
   //creo formulario
-  showCreateForm(idproyect) { 
- 
+  showCreateForm(idproyect) {
     const formHTML = `
         <form id="task-form">
           <div>
@@ -100,34 +94,33 @@ const domApp = {
       `;
 
     //(projectId, title, date, priority)
-      this.divTask.insertAdjacentHTML("afterbegin",formHTML)
+    this.divTask.insertAdjacentHTML("afterbegin", formHTML);
 
-      //accion button Fin
-      const formSummit = document.getElementById("btn-submit") 
-      formSummit.addEventListener("click", e => {
-        e.preventDefault();
-        //(projectId, title, date, priority)
-        appState.addTaskToProject(
-          idproyect,
-          document.getElementById("title").value,
-          document.getElementById("date").value,
-          document.getElementById("priority").value,
-        )
-        this.printTask(idproyect)
-      })
-       //accion button Fin
+    //accion button Fin
+    const formSummit = document.getElementById("btn-submit");
+    formSummit.addEventListener("click", e => {
+      e.preventDefault();
+      //(projectId, title, date, priority)
+      appState.addTaskToProject(
+        idproyect,
+        document.getElementById("title").value,
+        document.getElementById("date").value,
+        document.getElementById("priority").value
+      );
+      this.printTask(idproyect);
+    });
+    //accion button Fin
   },
 
-  BtnfromProyect(){
-    this.summitProject.addEventListener("click", e =>{
-      e.preventDefault()
+  BtnfromProyect() {
+    this.summitProject.addEventListener("click", e => {
+      e.preventDefault();
       //test de lo que necesito
       const newProyect = document.getElementById("project-name").value;
       console.log(newProyect);
       appState.addProject(newProyect);
       this.printProject();
       //
-      
-    })
-  }
-}
+    });
+  },
+};
